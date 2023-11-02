@@ -8,12 +8,10 @@ const ObjectId = require('mongoose').Types.ObjectId
 module.exports = class ItemController {
     //create a item
     static async create(req, res) {
-        const { title, short_desc, long_desc, price, brand } = req.body
+        const { title, short_desc, long_desc, price, brand, images } = req.body
 
-        const images = req.files
         const available = true
 
-        //images upload
 
         //validations
         if (!title) {
@@ -65,7 +63,7 @@ module.exports = class ItemController {
             brand,
             price,
             available,
-            images: [],
+            images,
             user: {
                 _id: user._id,
                 cnpj: user.cnpj,
@@ -76,10 +74,6 @@ module.exports = class ItemController {
                 address: user.address,
                 email:user.email
             }
-        })
-
-        images.map((image) => {
-            item.images.push(image.filename)
         })
 
         try {
@@ -341,19 +335,3 @@ module.exports = class ItemController {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
