@@ -7,7 +7,7 @@ const app = express()
 app.use(express.json())
 
 //Solving the cors problem
-app.use(cors({ credentials: true, origin: 'https://frontend-theta-weld-48.vercel.app/' }))
+app.use(cors())
 
 //Public folder for images
 app.use(express.static('public'))
