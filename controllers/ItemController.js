@@ -193,11 +193,12 @@ module.exports = class ItemController {
     static async updateItem(req, res) {
         const id = req.params.id
 
-        const { title, short_desc, long_desc, price, available,brand } = req.body
+        const { title, short_desc, long_desc, price, available,brand ,images} = req.body
 
-        const images = req.files
 
         const updatedData = {}
+
+        updatedData.images = images
 
         //check if item exists
         const item = await Item.findOne({ _id: id })
@@ -250,13 +251,6 @@ module.exports = class ItemController {
             return
         } else {
             updatedData.price = price
-        }
-
-        if (images.length > 0) {
-            updatedData.images = []
-            images.map((image) => {
-                updatedData.images.push(image.filename)
-            })
         }
 
         await Item.findByIdAndUpdate(id, updatedData)
