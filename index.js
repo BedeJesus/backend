@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-// const compression = require('compression');
+const compression = require('compression');
 
 
 //config JSON response
@@ -10,10 +10,10 @@ app.use(express.json())
 //Solving the cors problem
 app.use(cors())
 
-// app.use(compression());
-
 //Public folder for images
 app.use(express.static('public'))
+
+app.use(compression());
 
 //Routes
 const UserRoutes = require('./routes/UserRoutes')
