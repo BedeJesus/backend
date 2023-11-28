@@ -9,7 +9,7 @@ app.use(express.json())
 //Solving the cors problem
 app.use(cors())
 
-app.use(compression());
+// app.use(compression());
 
 //Public folder for images
 app.use(express.static('public'))
