@@ -108,6 +108,10 @@ module.exports = class ItemController {
         const user = await getUserByToken(token)
 
         const items = await Item.find({ 'user._id': user._id }).sort('-createAt')
+
+        res.setHeader('Content-Type', 'application/json');
+        res.setHeader('Accept-Encoding', 'gzip');
+        
         res.status(200).json({
             items
         })
