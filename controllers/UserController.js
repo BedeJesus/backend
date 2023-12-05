@@ -395,10 +395,10 @@ module.exports = class UserController {
 
             await user.save()
 
-            return res.status(200).json({ message: 'Senha atualziada', })
+            return res.status(200).json({ message: 'Senha atualziada' })
 
         } catch (err) {
-            res.status(400).json({ message: 'Erro em resetar a senha', error: err })
+            res.status(400).json({ message: err })
         }
 
     }
