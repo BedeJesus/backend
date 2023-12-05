@@ -344,12 +344,13 @@ module.exports = class UserController {
 
             mailer.sendMail({
                 to: email,
-                from: 'gabriel.jesilva@gmail.com',
+                from: 'senha@customerconnection.store',
                 template: 'forgot_password',
+                subject:'Reset de senha',
                 context: { token },
             }, (err) => {
                 if (err) {
-                    return res.status(400).json({ message: 'Não foi possivel enviar o email para mudar a senha' })
+                    return res.status(400).json({ message: 'Não foi possivel enviar o email com o token' })
                 }
 
                 res.status(200).json({
@@ -398,7 +399,7 @@ module.exports = class UserController {
             return res.status(200).json({ message: 'Senha atualziada' })
 
         } catch (err) {
-            res.status(400).json({ message: err })
+            res.status(400).json({ message: 'Problema ao atualizar a senha' })
         }
 
     }
