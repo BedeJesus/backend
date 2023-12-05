@@ -409,14 +409,14 @@ module.exports = class UserController {
         const payload = '123456789'
 
         const data = {
-            '1':payload.repeat(10000),
-            '2':payload.repeat(10000000),
-            '3':payload.repeat(10000),
-            '4':payload.repeat(10000),
-            '5':payload.repeat(10000),
-            '6':payload.repeat(10000),
-            '7':payload.repeat(10000),
-            '8':payload.repeat(10000)
+            '1':payload.repeat(1000),
+            '2':payload.repeat(1000),
+            '3':payload.repeat(1000),
+            '4':payload.repeat(1000),
+            '5':payload.repeat(1000),
+            '6':payload.repeat(1000),
+            '7':payload.repeat(1000),
+            '8':payload.repeat(1000)
         }
 
         const objString = JSON.stringify(data);
