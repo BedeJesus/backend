@@ -398,8 +398,7 @@ module.exports = class UserController {
             return res.status(200).json({ message: 'Senha atualziada', })
 
         } catch (err) {
-            console.log(err)
-            res.status(400).json({ message: 'Erro em resetar a senha' })
+            res.status(400).json({ message: 'Erro em resetar a senha', error: err })
         }
 
     }
