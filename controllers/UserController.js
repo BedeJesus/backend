@@ -404,36 +404,26 @@ module.exports = class UserController {
 
     }
 
-    static async teste(req, res) {
+    static async allowItemRegister(req, res) {
 
-        const payload = '123456789'
+        try {
+            const token = getToken(req)
 
-        const data = {
-            '1':payload.repeat(1000),
-            '2':payload.repeat(1000),
-            '3':payload.repeat(1000),
-            '4':payload.repeat(1000),
-            '5':payload.repeat(1000),
-            '6':payload.repeat(1000),
-            '7':payload.repeat(1000),
-            '8':payload.repeat(1000)
+            const user = await getUserByToken(token)
+
+            user.subscribed = true
+            await user.save()
+
+            console.log(user)
+
+            res.status(200).json({
+                message: 'Acesso liberado',
+            })
+
+        } catch (err) {
+            console.log(err)
+            res.status(400).json({ message: 'Erro ao liberar o acesso' })
         }
-
-        const objString = JSON.stringify(data);
-
-        // res.setHeader('Content-Type', 'application/json');
-        // zlib.gzip(objString, (err, buffer) => {
-        //     if (!err) {
-        //       // buffer contém os dados comprimidos em formato gzip
-        //       res.send(objString);
-        //     } else {
-        //       console.error('Erro na compressão gzip:', err);
-        //     }
-        //   });
-
-           res.send(objString);
-
-        
 
     }
 
